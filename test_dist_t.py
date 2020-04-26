@@ -74,6 +74,10 @@ class Dist_TTestCase(unittest.TestCase):
         observado = dist_t._simp_rule(4, 0, 4, lambda x, y: x * 2)
         self.assertEqual(esperado, observado)
 
+        esperado = 0.3500697296487445
+        observado = dist_t._simp_rule(1.1, 9, 4)
+        self.assertEqual(esperado, observado)
+
         esperado = 0.4948287014852501
         observado = dist_t._simp_rule(2.75, 30, 4)
         self.assertEqual(esperado, observado)
