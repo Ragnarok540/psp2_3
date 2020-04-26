@@ -7,6 +7,15 @@ def main(x, dof):
     except ValueError:
         print("ERROR: Todos los parámetros deben ser números reales o enteros.")
         sys.exit()
+    except RecursionError:
+        print("ERROR: El valor de grados de libertad debe ser entero positivo y mayor a cero.")
+        sys.exit()
+
 
 if __name__ == '__main__':
-    main(sys.argv[1], sys.argv[2])
+    try:
+        main(sys.argv[1], sys.argv[2])
+    except IndexError:
+        print("""ERROR: Se requiere el valor de x y los grados de libertad,
+por ejemplo: '1.1 9'.""")
+        sys.exit()

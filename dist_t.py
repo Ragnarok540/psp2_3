@@ -1,7 +1,6 @@
 from math import sqrt, pow, pi
 
 def _gamma(x):
-    x = float(x)
     if x == 1:
         return 1
     if x == 0.5:
@@ -39,13 +38,13 @@ def _simp_rule(x, dof, ns, f=_dist_t):
 def simpsons_rule(x, dof):
     error = 0.00001
     ns = 4
-    result1 = 0
-    result2 = 0
+    result1 = _simp_rule(x, dof, ns)
+    ns *= 2 
+    result2 = _simp_rule(x, dof, ns)
 
-    while error > result1 - result2:
+    while error < result2 - result1:
         result1 = _simp_rule(x, dof, ns)
         ns *= 2
         result2 = _simp_rule(x, dof, ns)
 
-    print (f"El número de segmentos usados fue: {ns}")
     return result2
